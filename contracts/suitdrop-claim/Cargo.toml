@@ -1,0 +1,40 @@
+[package]
+authors = ["Suitdrop", "$SHIRT"]
+description = "Suitdrop Claim on whitelist"
+edition = "2021"
+name = "suitdrop-claim"
+version = "1.0.1"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+codegen-units = 1
+debug = false
+debug-assertions = false
+incremental = false
+lto = true
+opt-level = 3
+overflow-checks = true
+panic = 'abort'
+rpath = false
+
+[features]
+backtraces = ["cosmwasm-std/backtraces"]
+# use library feature to disable all init/handle/query exports
+library = []
+
+[dependencies]
+cosmwasm-std = { version = "1.1.0" }
+cw-storage-plus = "1.0.1"
+cw2 = { version = "1.0.1" }
+cw20 = { version = "1.0.1" }
+hex = "0.4"
+schemars = "0.8.1"
+serde = {version = "1.0.103", default-features = false, features = ["derive"]}
+sha2 = {version = "0.9.5", default-features = false}
+thiserror = {version = "1.0.23"}
+
+[dev-dependencies]
+cosmwasm-schema = { version = "1.1.0" }
+cosmwasm-storage = {version = "1.1.0"}
